@@ -3,7 +3,7 @@ Learning docker from [this](https://www.udemy.com/course/docker-and-kubernetes-t
 
 command to run code
 
-> docker build -t <container_name> .
-> docker run -p <local_port>:<docker_specified_port> <container_name>
+>> docker build -t <container_name> .
+>> docker run -p <local_port>:<docker_specified_port> <container_name>
   example:
     docker run -p 8080:8080 abir/simpleweb
