@@ -6,10 +6,20 @@ services:
     environment:
       POSTGRES_DB: "db"
       POSTGRES_HOST_AUTH_METHOD: "trust"
+
   redis:
     image: 'redis:latest'
 
-  server:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+
+    ports:
+      - '3050:80'
+
+  api:
     build:
       dockerfile: Dockerfile.dev
       context: ./server
