@@ -1,0 +1,17 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t abir/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run abir/react/test npm test -- --coverage
+
+after_success:
+  - docker build -t abir/multi-client ./client
+  - docker build -t abir/multi-ngnix ./nginx
+  - docker build -t abir/multi-server ./server
+  - docker build -t abir/multi-worker ./worker
+  
