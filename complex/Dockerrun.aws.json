@@ -1,0 +1,34 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "abir/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "abir/multi-server",
+            "hostname": "api",
+            "essential":false
+        },
+        {
+            "name": "worker",
+            "image": "abir/multi-worker",
+            "hostname": "worker",
+            "essential":false
+        },
+        {
+            "name": "nginx",
+            "image": "abir/multi-nginx",
+            "hostname": "nginx",
+            "essential":true,
+            "portMappings": {
+                "hostPort":80,
+                "containerPort":80
+            }
+        }
+    ],
+    "links": ["client","server"]
+}
