@@ -2,8 +2,9 @@ FROM node
 
 WORKDIR /app
 
-COPY . ./app
-# COPY . ./ same as app is workdir
+COPY . /app
+# COPY . ./app is not same -> cause ./app means from workdir to app
+# /app means from current position to app which can be above root
 
 
 RUN npm install
