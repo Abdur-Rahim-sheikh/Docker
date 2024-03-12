@@ -21,3 +21,10 @@ command to run code
 - `EXPOSE` is used to specify the port on which the container will listen for incoming connections.
 
 - `CMD` is used not to run anything when the image is being built, but to run something when a container is being started.
+
+- `ATTACH` is used to attach to a running container.
+  - `docker attach <container_id>`
+
+- `logs` is used to fetch the logs of a container.
+  - `docker logs <container_id>`
+  - `docker logs -f <container_id>` to follow the logs
