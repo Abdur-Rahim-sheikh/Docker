@@ -1,0 +1,2 @@
+tem file to check if docker can copy files from/to a running container
+using docker cp src dest
