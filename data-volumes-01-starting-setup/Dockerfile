@@ -9,7 +9,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-
-VOLUME [ "/app/feedback" ]
-
+# make sure your feedback and temp folder present before build
 CMD [ "node", "server.js" ]
