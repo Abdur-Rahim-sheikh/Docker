@@ -35,4 +35,8 @@ command to run code
 
 - `--env-file` is used to set the environment variable from a file.
   - `docker run --env-file <file_name e.g .env> <container_name>` 
-  
+
+- `ARG` is used to pass the argument to the dockerfile.
+  - `ARG <key>`
+  - `docker build --build-arg <key>=<value> .`
+  - so it's bind in image building and locked not in container running.
