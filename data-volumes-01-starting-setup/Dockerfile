@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+ENV PORT 80
+
+EXPOSE $PORT
 # make sure your feedback and temp folder present before build
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
