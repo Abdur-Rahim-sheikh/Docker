@@ -28,3 +28,11 @@ command to run code
 - `logs` is used to fetch the logs of a container.
   - `docker logs <container_id>`
   - `docker logs -f <container_id>` to follow the logs
+
+- `ENV` is used to set the environment variable.
+  - `ENV <key> <value>`
+  - `docker run --env <key>=<value> <container_name>`
+
+- `--env-file` is used to set the environment variable from a file.
+  - `docker run --env-file <file_name e.g .env> <container_name>` 
+  
