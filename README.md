@@ -43,3 +43,12 @@ command to run code
 
 - `host.docker.internal` is used to access the host machine from the container.
   - {mongo: 'host.docker.internal'} rather than {mongo: 'localhost'} to connect to the mongoDB running on the host machine.
+
+- `docker network create <network_name>` is used to create a network.
+  - This is how we can connect multiple containers together.
+  - `docker run --network <network_name> <container_name>`
+  - `docker network connect <network_name> <container_name>` to connect a container to a network.
+  - in this case we put the container name in the place of the host name in the connection string.
+    - `mongodb://<mongo_container_name>:27017/<db_name>`
+  * note: we can connect to other container using the ip address of the container as well.
+  * but it's not recommended.
