@@ -40,3 +40,6 @@ command to run code
   - `ARG <key>`
   - `docker build --build-arg <key>=<value> .`
   - so it's bind in image building and locked not in container running.
+
+- `host.docker.internal` is used to access the host machine from the container.
+  - {mongo: 'host.docker.internal'} rather than {mongo: 'localhost'} to connect to the mongoDB running on the host machine.
