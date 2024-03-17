@@ -8,6 +8,10 @@ command to run code
   example:
     docker run -p 8080:8080 abir/simpleweb
 
+> 3) note: `host.docker.internal` works if you install docker desktop. I mean development version.
+  - But if production version installed using `sudo apt-get install ....`  it does not support it.
+  - but we can use it by passing an argument in `docker run --add-host=host.docker.internal:host-gateway ...`
+
 ### Command meaning
 - `FROM image-name` is used to specify the base image from which you are building.
 
@@ -52,3 +56,4 @@ command to run code
     - `mongodb://<mongo_container_name>:27017/<db_name>`
   * note: we can connect to other container using the ip address of the container as well.
   * but it's not recommended.
+
