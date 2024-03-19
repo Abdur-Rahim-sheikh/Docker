@@ -10,4 +10,8 @@ COPY . .
 
 EXPOSE 80
 
+ENV MONGODB_USERNAME=dummy
+
+ENV MONGODB_PASSWORD=secret
+
 CMD [ "npm", "start" ]
