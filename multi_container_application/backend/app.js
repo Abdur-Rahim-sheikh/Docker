@@ -82,9 +82,9 @@ app.delete('/goals/:id', async (req, res) => {
     res.status(500).json({ message: 'Failed to delete goal.' });
   }
 });
-
+// mongoose connection style https://tinyurl.com/mwxrkrbz
 mongoose.connect(
-  'mongodb://mongodb:27017/course-goals',
+  'mongodb://abir:secret@mongodb:27017/course-goals?authSource=admin',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
