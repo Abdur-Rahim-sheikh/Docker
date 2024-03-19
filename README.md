@@ -57,3 +57,7 @@ command to run code
   * note: we can connect to other container using the ip address of the container as well.
   * but it's not recommended.
 
+- `-v` is used to mount a volume.
+  - `docker run -v /app/node_modules` is anonymous volume. 
+  - `docker run -v data:/app` is named volume.
+  - `docker run -v $(pwd):/app` is bind mount. 
