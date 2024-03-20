@@ -24,7 +24,7 @@ services:
 
   composer:
     build:
-      context: ./dockerfile
+      context: ./dockerfiles
       dockerfile: composer.dockerfile
 
     volumes:
