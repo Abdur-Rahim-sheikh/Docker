@@ -9,10 +9,10 @@ command to run code
     docker run -p 8080:8080 abir/simpleweb
 
 > 3) note: `host.docker.internal` works if you install docker desktop. I mean development version.
-  - But if production version installed using `sudo apt-get install ....`  it does not support it.
-  - but we can use it by passing an argument in `docker run --add-host=host.docker.internal:host-gateway ...`
+>   - But if production version installed using `sudo apt-get install ....`  it does not support it.
+>   - but we can use it by passing an argument in `docker run --add-host=host.docker.internal:host-gateway ...`
 
-### Command meaning
+### Docker Commands
 - `FROM image-name` is used to specify the base image from which you are building.
 
 - `WORKDIR` is used to set the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions that follow it in the Dockerfile. 
@@ -61,3 +61,20 @@ command to run code
   - `docker run -v /app/node_modules` is anonymous volume. 
   - `docker run -v data:/app` is named volume.
   - `docker run -v $(pwd):/app` is bind mount. 
+
+## Docker Compose notes
+
+> Though when we run docker compose it creates container name with some suffix and prefix.
+> - it still refers to the container name we provided in the `docker-compose.yml` file. So we can use the container name in this case service name specified by us in docker-compose in the connection string and for other purposes.
+> - But in command line we have to use the container name with the suffix and prefix.
+### Docker Compose Commands
+- `docker-compose up` is used to start the containers.
+  - `docker-compose up -d` to run in the background.
+  - `docker-compose up --build` to rebuild the image.
+  - it will create a network and connect the containers to the network.
+  - it will create a volume and mount the volume to the container.
+  - all automatic name will be prefixed with the parent folder name.
+
+- `docker-compose down` is used to stop the containers.
+  - `docker-compose down -v/--volumes` to remove the volumes as well.
+
