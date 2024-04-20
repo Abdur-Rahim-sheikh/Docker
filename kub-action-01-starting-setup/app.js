@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/error', (req, res) => {
-  
+  res.send('OK', 200);
   process.exit(1);
 });
 
