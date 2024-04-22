@@ -102,6 +102,9 @@ command to run code
   - `kubectl rollout history deployment/<deployment_name>` to check the history of the rollout.
   - `kubectl rollout undo deployment/<deployment_name>` to undo the latest deployment.
   - `kubectl rollout undo deployment/<deployment_name> --to-revision=<revision_number>` to undo the rollout to a specific revision.
+- `kubectl apply -f <file_name>` to apply the configuration file.
+  - `kubectl apply -f <file_name> -f <file_name>` or  `-f <file_name1>,<file_name2>` to apply multiple configuration files.
+  - `kubectl apply -f <directory_name>` to apply all the configuration files in the directory.
 ## Minikube commands:
 - `minikube start --driver=driverName` to start the kubernetes cluster.
   - drivers for linux can be `docker`, `QEMU`, `kvm2`, `virtualbox`, `Podman`, `none`
@@ -128,8 +131,8 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
       - `labels` is used to specify the labels of the pod object.
     - `spec` is used to specify the specification of the pods object.
       - `containers` is used to specify the containers of the pods object.
-        - `name` is used to specify the name of the container.
-        - `image` is used to specify the image of the container.
-        - `ports` is used to specify the ports of the container.
-          - `containerPort` is used to specify the port of the container.
+        - `name1` is used to specify the name of the container.
+          `image1` is used to specify the image of the container.
+        - `name2` is used to specify the name of the container.
+          `image2` is used to specify the image of the container.
 
