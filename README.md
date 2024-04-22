@@ -78,3 +78,58 @@ command to run code
 - `docker-compose down` is used to stop the containers.
   - `docker-compose down -v/--volumes` to remove the volumes as well.
 
+
+# Kubernetes
+
+## kube control commands:
+- `kubectl create deployment <deployment_name> --image=<image_name>` to create a deployment.
+  - local image cannot be used. It has to be pushed to the docker hub. Because the kubernetes cluster is a separate environment. and will through error `ErrImagePull`.
+  - `kubectl get deployments` to get the deployments.
+  - `kubectl delete deployment <deployment_name>` to delete the deployment.
+  - `kubectl get pods` to get the pods.
+  - `kubectl describe pod <pod_name>` to get the details of the pod.
+- `kubectl expose deployment <deployment_name> --type=TypeName --port=portId` to expose the deployment.
+  - type `ClusterIP` is used to expose the deployment to the inside the cluster.
+  - type `NodePort` is used to expose the deployment to the outside world but it will expose the deployment to the port range of the worker node.
+  - type `LoadBalancer` is used to expose the deployment to the outside world. It will create a load balancer.
+  - `kubectl get services` to get the services.
+  - `kubectl delete service <service_name>` to delete the service.
+- `kubectl scale deployment/<deployment_name> --replicas=<no_of_replica>` to scale up or down the deployment.
+  - fact is if we scale down those pods will be deleted which are not in use or has more restarts.
+
+- `kubectl set image deployment/<deployment_name> <container_name>=<new_image_name>` to update the image of the deployment.
+  - `kubectl rollout status deployment/<deployment_name>` to check the status of the rollout.
+  - `kubectl rollout history deployment/<deployment_name>` to check the history of the rollout.
+  - `kubectl rollout undo deployment/<deployment_name>` to undo the latest deployment.
+  - `kubectl rollout undo deployment/<deployment_name> --to-revision=<revision_number>` to undo the rollout to a specific revision.
+## Minikube commands:
+- `minikube start --driver=driverName` to start the kubernetes cluster.
+  - drivers for linux can be `docker`, `QEMU`, `kvm2`, `virtualbox`, `Podman`, `none`
+- `minikube status` to check the status of the cluster.
+- `minikube dashboard` to open the dashboard.
+- `minikube service <service_name>` to open the service url in the browser.
+- `minikube stop` to stop the cluster.
+- `minikube delete` to delete the cluster.
+
+## Kubernetes files [YAML]:
+look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.yaml) file. which i'll be referencing
+- `apiVersion` is used to specify the version of the kubernetes api.
+  - `apiVersion: apps/v1` is used to specify the version of the apps. for deployment kind
+  - `apiVersion: v1` is used to specify the version of the api. for service kind
+- `kind` is used to specify the kind of the object.
+- `metadata` is used to specify the metadata of the kind object.
+  - `name` is used to specify the name of the kind object.
+- `spec` is used to specify the specification of the object.
+  - `replicas` is used to specify the number of replicas.
+  - `selector` is used to specify the selector of the object.
+    - `matchLabels` is used to specify the labels of the object.
+  - `template` is used to specify the template of the kind object which is pod.
+    - `metadata` is used to specify the metadata of the pod object.
+      - `labels` is used to specify the labels of the pod object.
+    - `spec` is used to specify the specification of the pods object.
+      - `containers` is used to specify the containers of the pods object.
+        - `name` is used to specify the name of the container.
+        - `image` is used to specify the image of the container.
+        - `ports` is used to specify the ports of the container.
+          - `containerPort` is used to specify the port of the container.
+
