@@ -105,6 +105,9 @@ command to run code
 - `kubectl apply -f <file_name>` to apply the configuration file.
   - `kubectl apply -f <file_name> -f <file_name>` or  `-f <file_name1>,<file_name2>` to apply multiple configuration files.
   - `kubectl apply -f <directory_name>` to apply all the configuration files in the directory.
+- `kubectl delete -f <file_name>` to delete the configuration defined in that file.
+  - `kubectl delete -f <file_name> -f <file_name>` or  `-f <file_name1>,<file_name2>` to delete multiple configuration files.
+  - `kubectl delete -f <directory_name>` to delete all the configuration files in the directory.
 ## Minikube commands:
 - `minikube start --driver=driverName` to start the kubernetes cluster.
   - drivers for linux can be `docker`, `QEMU`, `kvm2`, `virtualbox`, `Podman`, `none`
@@ -115,24 +118,39 @@ command to run code
 - `minikube delete` to delete the cluster.
 
 ## Kubernetes files [YAML]:
+
 look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.yaml) file. which i'll be referencing
+- `---` is used to separate the different objects in the same file.
 - `apiVersion` is used to specify the version of the kubernetes api.
   - `apiVersion: apps/v1` is used to specify the version of the apps. for deployment kind
   - `apiVersion: v1` is used to specify the version of the api. for service kind
 - `kind` is used to specify the kind of the object.
 - `metadata` is used to specify the metadata of the kind object.
   - `name` is used to specify the name of the kind object.
+  - `labels` is used to specify the labels of the kind object.
+    - exmaple: `labels:`
+                  `group: example`
+    - Now to delete by name, `kubectl delete [deployment,service,...] -l group=example`
 - `spec` is used to specify the specification of the object.
   - `replicas` is used to specify the number of replicas.
   - `selector` is used to specify the selector of the object.
     - `matchLabels` is used to specify the labels of the object.
+    - `matchExpressions` is used to specify the expressions of the object.
+      - example: `matchExpressions: [{key: environment, operator: In, values: [first-app, meta-app]}]`
   - `template` is used to specify the template of the kind object which is pod.
     - `metadata` is used to specify the metadata of the pod object.
       - `labels` is used to specify the labels of the pod object.
-    - `spec` is used to specify the specification of the pods object.
+    - `spec` is used to specify the specification of the pods object. (container specification)
       - `containers` is used to specify the containers of the pods object.
         - `name1` is used to specify the name of the container.
           `image1` is used to specify the image of the container.
         - `name2` is used to specify the name of the container.
           `image2` is used to specify the image of the container.
 
+    - `spec` for service specification.
+      - `type` is used to specify the type of the service.
+        - types can be `['ClusterIP', 'NodePort', 'LoadBalancer']`
+      - `ports` is used to specify the ports of the service.
+        - `port` is used to specify the port of the service.
+        - `targetPort` is used to specify the target port of the service.
+        
