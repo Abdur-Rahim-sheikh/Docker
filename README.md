@@ -144,6 +144,8 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
       - `containers` is used to specify the containers of the pods object.
         - `name1` is used to specify the name of the container.
           `image1` is used to specify the image of the container.
+          `imagePullPolicy` is used to specify the image pull policy of the container.
+          -  `[Always, IfNotPresent, Never]` are some policy
         - `livenessProbe` is used to specify how we check if the image container is live.
           - `httpGet` is used to specify the http get of the liveness probe.
             - `path` is used to specify the path of the http get.
