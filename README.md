@@ -144,8 +144,15 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
       - `containers` is used to specify the containers of the pods object.
         - `name1` is used to specify the name of the container.
           `image1` is used to specify the image of the container.
+        - `livenessProbe` is used to specify how we check if the image container is live.
+          - `httpGet` is used to specify the http get of the liveness probe.
+            - `path` is used to specify the path of the http get.
+            - `port` is used to specify the port of the http get.
+          - `initialDelaySeconds` is used to specify the initial delay seconds of the liveness probe.
+          - `periodSeconds` is used to specify the period seconds of the liveness probe.
         - `name2` is used to specify the name of the container.
           `image2` is used to specify the image of the container.
+        
 
     - `spec` for service specification.
       - `type` is used to specify the type of the service.
