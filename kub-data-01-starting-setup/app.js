@@ -34,7 +34,7 @@ app.post('/story', (req, res) => {
 
 app.get("/error",(req, res) =>{
   res.send("pod will terminate now", 200);
-  FileSystem.exit(1);
+  process.exit(1);
 });
 
 app.listen(3000);
