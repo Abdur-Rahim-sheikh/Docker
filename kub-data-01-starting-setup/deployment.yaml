@@ -15,6 +15,14 @@ spec:
       containers:
         - name: story
           image: abdurrahimsheikh/kube-story-node:3
+          env:
+            - name: STORY_FOLDER
+              # value: 'story'
+              valueFrom: 
+                configMapKeyRef:
+                  name: data-store-env
+                  key: folder
+
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /app/story
