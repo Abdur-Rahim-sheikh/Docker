@@ -67,6 +67,7 @@ command to run code
 > Though when we run docker compose it creates container name with some suffix and prefix.
 > - it still refers to the container name we provided in the `docker-compose.yml` file. So we can use the container name in this case service name specified by us in docker-compose in the connection string and for other purposes.
 > - But in command line we have to use the container name with the suffix and prefix.
+
 ### Docker Compose Commands
 - `docker-compose up` is used to start the containers.
   - `docker-compose up -d` to run in the background.
@@ -117,6 +118,12 @@ command to run code
 - `minikube stop` to stop the cluster.
 - `minikube delete` to delete the cluster.
 
+## foot note about kubernetes:
+There are two types of volumes in kubernetes. 
+  1) "normal" volumes: Which are tied to the pod lifecycle or worker lifecycle.
+  2) "persistent" volumes: Which are not tied to anything. Rather it is a standalone cluster resource which we claim in our pod.
+
+  
 ## Kubernetes files [YAML]:
 
 look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.yaml) file. which i'll be referencing
