@@ -141,9 +141,12 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
     - `metadata` is used to specify the metadata of the pod object.
       - `labels` is used to specify the labels of the pod object.
     - `spec` is used to specify the specification of the pods object. (container specification)
-      - `containers` is used to specify the containers of the pods object.
-        - `name1` is used to specify the name of the container.
-          `image1` is used to specify the image of the container.
+      - `containers` is used to specify the containers of the pods object.<br>
+        - `name1` is used to specify the name of the container.<br>
+          `image1` is used to specify the image of the container.<br>
+          `volumeMounts` is used to specify the volume mounts of the container.<br>
+              - `mountPath` is used to specify the mount path of the volume.<br>
+                `name` is used to specify the name of the volume.<br>
           `imagePullPolicy` is used to specify the image pull policy of the container.
           -  `[Always, IfNotPresent, Never]` are some policy
         - `livenessProbe` is used to specify how we check if the image container is live.
@@ -152,9 +155,15 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
             - `port` is used to specify the port of the http get.
           - `initialDelaySeconds` is used to specify the initial delay seconds of the liveness probe.
           - `periodSeconds` is used to specify the period seconds of the liveness probe.
-        - `name2` is used to specify the name of the container.
-          `image2` is used to specify the image of the container.
-        
+        <!-- - `name2` is used to specify the name of the container.
+          `image2` is used to specify the image of the container. -->
+      - `volumes` is used to specify the volumes of the pods object.
+        - `name` is used to specify the name of the volume. like `story-volume`
+          `emptyDir` is used to specify the empty directory <b>for each pod</b>.<br>
+          or<br>
+          `hostPath` is used to specify the host path of the volume **into a single worker node**.<br>
+            `path` is used to specify the path of the host path. like `/app`<br>
+            `type` is used to specify the type of the host path. like `DirectoryOrCreate`
 
     - `spec` for service specification.
       - `type` is used to specify the type of the service.
