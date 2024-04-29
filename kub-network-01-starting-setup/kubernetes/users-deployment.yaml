@@ -16,4 +16,9 @@ spec:
     spec:
       containers:
         - name: users
-          image: abdurrahimsheikh/kube-data-demo
+          image: abdurrahimsheikh/kube-data-demo:latest
+          env:
+            - name: AUTH_ADDRESS
+              value: localhost
+        - name: auth
+          image: abdurrahimsheikh/kube-auth-node:latest
