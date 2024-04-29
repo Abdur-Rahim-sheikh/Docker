@@ -23,7 +23,11 @@ app.post('/signup', async (req, res) => {
   }
 
   try {
-    const hashedPW = await axios.get(`http://${process.env.AUTH_ADDRESS}`+'/hashed-password/' + password);
+    // as the auth-service will create a service, kubernetes will create a environment variable,
+    // where dash will be replaced by underscore and all upper case, so auth-service will have it's ip
+    // as AUTH_SERVICE and will append SERIVE_HOST to get the url so in total
+    // AUTH_SERVICE_SERVICE_HOST
+    const hashedPW = await axios.get(`http://${process.env.AUTH_SERVICE_SERVICE_HOST}`+'/hashed-password/' + password);
     // const hashedPW = "dummy text";
     
     // since it's a dummy service, we don't really care for the hashed-pw either
@@ -56,7 +60,7 @@ app.post('/login', async (req, res) => {
   // normally, we'd find a user by email and grab his/ her ID and hashed password
   const hashedPassword = password + '_hash';
   const response = await axios.get(
-    `http://${process.env.AUTH_ADDRESS}/token/` + hashedPassword + '/' + password
+    `http://${process.env.AUTH_SERVICE_SERVICE_HOST}/token/` + hashedPassword + '/' + password
   );
   // const response = {status:200, data:{token: 'abc'}};
   if (response.status === 200) {
