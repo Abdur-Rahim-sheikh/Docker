@@ -186,10 +186,10 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
     ```server {
       listen 80;
 
-      location /api {
-        <!-- proxy_pass http://<service_name>:<port>; -->
-        proxy_pass tasks-service:default;
+      location /api/ {
+        <!-- proxy_pass http://<service_name>:<port>/; -->
+        proxy_pass http://tasks-service.default:8000/;
       }
     }```
-  - after that we change all url in the client side from `http://localhost:3000` to `http://localhost/api` and it will route the request to the appropriate service.
-
+  - after that we change all url in the client side from `http://url:port` to `http://url/api` and it will route the request to the appropriate service.
+  **note:** the trailing `/` is important in the `proxy_pass` directive.
