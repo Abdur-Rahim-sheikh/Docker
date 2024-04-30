@@ -27,7 +27,7 @@ app.post('/signup', async (req, res) => {
     // where dash will be replaced by underscore and all upper case, so auth-service will have it's ip
     // as AUTH_SERVICE and will append SERIVE_HOST to get the url so in total
     // AUTH_SERVICE_SERVICE_HOST
-    const hashedPW = await axios.get(`http://${process.env.AUTH_SERVICE_SERVICE_HOST}`+'/hashed-password/' + password);
+    const hashedPW = await axios.get(`http://${process.env.AUTH_ADDRESS}`+'/hashed-password/' + password);
     // const hashedPW = "dummy text";
     
     // since it's a dummy service, we don't really care for the hashed-pw either

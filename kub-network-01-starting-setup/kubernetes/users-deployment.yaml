@@ -19,4 +19,7 @@ spec:
           image: abdurrahimsheikh/kube-data-demo:latest
           env:
             - name: AUTH_ADDRESS
-              value: localhost
+              # value: localhost
+              # value: 10.92.102.124
+              # or use dns namespace
+              value: "auth-service.default"
