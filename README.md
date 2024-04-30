@@ -179,3 +179,17 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
         - `port` is used to specify the port of the service.
         - `targetPort` is used to specify the target port of the service.
         
+#### `reverse proxy` is used in nginx when put to deployment
+  - we can use `nginx` as a reverse proxy to route the request to the appropriate service.
+  for example
+    in the `nginx.conf` file we can specify the configuration like this
+    ```server {
+      listen 80;
+
+      location /api {
+        <!-- proxy_pass http://<service_name>:<port>; -->
+        proxy_pass tasks-service:default;
+      }
+    }```
+  - after that we change all url in the client side from `http://localhost:3000` to `http://localhost/api` and it will route the request to the appropriate service.
+
