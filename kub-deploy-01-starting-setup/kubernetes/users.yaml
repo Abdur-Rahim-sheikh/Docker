@@ -30,6 +30,6 @@ spec:
           image: abdurrahimsheikh/kube-data-demo:latest
           env:
             - name: MONGODB_CONNECTION_URI
-              value: 'mongodb+srv://aws-eks-abir:3qLF9uA1P6nGzyNk@cluster0.qqjlikt.mongodb.net/users-db?retryWrites=true&w=majority&appName=Cluster0'
+              value: 'mongodb+srv://aws-eks-abir:3qLF9uA1P6nGzyNk@cluster0.qqjlikt.mongodb.net/users?retryWrites=true&w=majority&appName=Cluster0'
             - name: AUTH_API_ADDRESSS
               value: 'auth-service.default:3000'
