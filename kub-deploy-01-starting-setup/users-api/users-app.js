@@ -32,7 +32,10 @@ app.use((err, req, res, next) => {
 
 mongoose.connect(
   process.env.MONGODB_CONNECTION_URI,
-  { useNewUrlParser: true },
+  {
+    useNewUrlParser: true ,
+    useUnifiedTopology: true,
+  },
   (err) => {
     if (err) {
       console.log('COULD NOT CONNECT TO MONGODB!');
