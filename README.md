@@ -193,3 +193,8 @@ look at [master-deployment.yaml](kub-action-01-starting-setup/master-deployment.
     }```
   - after that we change all url in the client side from `http://url:port` to `http://url/api` and it will route the request to the appropriate service.
   **note:** the trailing `/` is important in the `proxy_pass` directive.
+
+#### Always check if port matches your call
+#### Always check if aws is configured properly
+#### if some pod has issue, see
+  * `kubectl describe pod <pod_name>` to see the error
